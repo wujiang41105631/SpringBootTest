@@ -18,6 +18,7 @@ import java.util.List;
  * @description
  */
 @RestController
+@RequestMapping("/map")
 @Slf4j
 public class BizController {
     @Autowired
@@ -36,9 +37,14 @@ public class BizController {
     }
 
 
-    @RequestMapping("/")
+    @RequestMapping("/home")
     public String home() {
         log.info(this.getClass().getName());
         return "hello world" + this.getClass().getName();
+    }
+
+    @RequestMapping("/exception")
+    public String exception() {
+        throw new NullPointerException("test");
     }
 }

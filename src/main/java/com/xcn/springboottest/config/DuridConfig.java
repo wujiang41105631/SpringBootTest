@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
@@ -18,11 +18,11 @@ import javax.sql.DataSource;
  * @date: 2019/6/14
  * @description
  */
-@SpringBootApplication
-@MapperScans({@MapperScan(basePackages = "com.xcn.springboottest.bsi.dao",sqlSessionFactoryRef = "sqlSessionFactory")})
+@Configuration
+@MapperScans({@MapperScan(basePackages = "com.xcn.springboottest.bsi.dao", sqlSessionFactoryRef = "sqlSessionFactory")})
 public class DuridConfig {
 
-    public DuridConfig(){
+    public DuridConfig() {
         System.out.println("init  DruildConfig");
     }
 
