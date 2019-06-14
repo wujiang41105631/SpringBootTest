@@ -1,4 +1,4 @@
-package com.xcn.springboottest.controller;
+package com.xcn.springboottest.bsi.controller;
 
 import com.xcn.springboottest.bsi.dao.RuleDao;
 import com.xcn.springboottest.bsi.dto.RuleInfo;
@@ -17,7 +17,7 @@ import java.util.List;
  * @date: 2019/6/14
  * @description
  */
-@RestController("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+@RestController
 @Slf4j
 public class BizController {
     @Autowired

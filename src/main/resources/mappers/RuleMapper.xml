@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xcn.springboottest.bsi.dao.RuleDao">
+
+    <resultMap id="BaseResultMap" type="com.xcn.springboottest.bsi.dto.RuleInfo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="rule_no" jdbcType="VARCHAR" property="ruleNo"/>
+        <result column="rule_name" jdbcType="VARCHAR" property="ruleName"/>
+        <result column="scene_id" jdbcType="VARCHAR" property="sceneId"/>
+        <result column="rule_version" jdbcType="INTEGER" property="ruleVersion"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="VARCHAR" property="createUser"/>
+        <result column="rule_input" jdbcType="LONGVARCHAR" property="ruleInput"/>
+        <result column="rule_drl" jdbcType="LONGVARCHAR" property="ruleDrl"/>
+    </resultMap>
+
+    <select id="getRuleInfos" resultMap="BaseResultMap">
+        select * from rule_entity limit 0,10
+    </select>
+</mapper>
