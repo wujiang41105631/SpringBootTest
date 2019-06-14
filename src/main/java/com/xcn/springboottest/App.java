@@ -1,24 +1,23 @@
 package com.xcn.springboottest;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
 /**
  * Hello world!
- *
  */
-public class App 
-{
-	
-	public static void main(String[] args) {
-		long t1 = System.currentTimeMillis();
-		String tempString = "ABFGKWIGJWIOTIUQUEIOQIWEUQIW123123123123";
-		for(int i = 0;i<10000000;i++){
-			tempString.equalsIgnoreCase("ABFGKWIGJWIOTIUQUEIOQIWEUQIW123123123123");
-		}
-		long t2 = System.currentTimeMillis();
-		System.out.println(t2-t1);
-		for(int i = 0;i<10000000;i++){
-			tempString.equals("ABFGKWIGJWIOTIUQUEIOQIWEUQIW123123123123");
-		}
-		System.out.println(System.currentTimeMillis()-t2);
-	}
-  
+@SpringBootApplication
+@ComponentScan(basePackages = {"com.xcn.springboottest"})
+@EnableScheduling
+@PropertySource("classpath:mq-config.properties")
+@EnableAsync
+public class App {
+    public static void main(String[] args) {
+        SpringApplication.run(new Class[]{App.class}, args);
+    }
+
 }
