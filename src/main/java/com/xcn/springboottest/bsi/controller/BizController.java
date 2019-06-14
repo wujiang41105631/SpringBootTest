@@ -24,13 +24,21 @@ public class BizController {
     @Autowired
     private RuleDao ruleDao;
     @Value("${mq.producer.send}")
-    private String dbUrl;
+    private String mqTopic;
 
+    /**
+     * 字段注入
+     */
     @PostConstruct
     public void init() {
-        log.error("{}", dbUrl);
+        log.error("{}", mqTopic);
     }
 
+    /**
+     * 查库
+     *
+     * @return
+     */
     @GetMapping("/getRuleInfos")
     public List<RuleInfo> getRuleInfos() {
         return ruleDao.getRuleInfos();
@@ -43,6 +51,11 @@ public class BizController {
         return "hello world" + this.getClass().getName();
     }
 
+    /**
+     * 异常处理
+     *
+     * @return
+     */
     @RequestMapping("/exception")
     public String exception() {
         throw new NullPointerException("test");
