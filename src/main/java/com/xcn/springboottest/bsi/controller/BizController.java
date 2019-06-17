@@ -19,7 +19,7 @@ import java.util.List;
  * @description
  */
 @RestController
-@RequestMapping
+@RequestMapping("/biz")
 @Slf4j
 public class BizController {
     @Autowired
@@ -51,7 +51,7 @@ public class BizController {
     @RequestMapping("/home")
     public String home() {
         log.info(this.getClass().getName());
-        return "hello world" + this.getClass().getName();
+        return "11111111111111hello world" + this.getClass().getName();
     }
 
     /**
