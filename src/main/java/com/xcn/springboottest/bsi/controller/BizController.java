@@ -1,7 +1,7 @@
 package com.xcn.springboottest.bsi.controller;
 
-import com.xcn.springboottest.bsi.dao.RuleDao;
 import com.xcn.springboottest.bsi.dto.RuleInfo;
+import com.xcn.springboottest.bsi.service.BizService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,11 +19,11 @@ import java.util.List;
  * @description
  */
 @RestController
-@RequestMapping("/map")
+@RequestMapping
 @Slf4j
 public class BizController {
     @Autowired
-    private RuleDao ruleDao;
+    private BizService bizService;
     @Value("${mq.producer.send}")
     private String mqTopic;
 
@@ -41,7 +42,9 @@ public class BizController {
      */
     @GetMapping("/getRuleInfos")
     public List<RuleInfo> getRuleInfos() {
-        return ruleDao.getRuleInfos();
+        List<RuleInfo> objects = new ArrayList<>();
+        objects.add(bizService.getAllRuleInfo());
+        return objects;
     }
 
 
