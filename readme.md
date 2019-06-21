@@ -1,1 +1,2 @@
 优质：https://github.com/JeffLi1993/springboot-learning-example
+整合dubbo时最好把spring-boot-dev 依赖去掉,否则 会出现java.lang.ClassCastException: com.neo.service.UserService cannot be cast to com.neo.service.UserService 异常
