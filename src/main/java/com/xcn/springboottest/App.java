@@ -15,6 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @PropertySource("classpath:mq-config.properties")
 @EnableAsync
+//@EnableDubboConfiguration
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(new Class[]{App.class}, args);
