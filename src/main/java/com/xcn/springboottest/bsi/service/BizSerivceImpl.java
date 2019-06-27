@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 
 /**
@@ -20,6 +21,16 @@ public class BizSerivceImpl implements BizService {
 
     @Autowired
     private RuleDao ruleDao;
+
+    @PostConstruct
+    public void init(){
+        switch("123"){
+            case "1": break;
+            case "2": break;
+            case "3": break;
+
+        }
+    }
 
     @Override
     public String getRuleInfo() {

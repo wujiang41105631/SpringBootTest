@@ -3,6 +3,7 @@ package com.xcn.springboottest.dubbo;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.test.dto.DemoBean;
 import com.test.service.DemoInterface;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @author: xupeng.guo
@@ -11,6 +12,11 @@ import com.test.service.DemoInterface;
  */
 @Service
 public class DemoServiceImpl implements DemoInterface {
+
+    @Value("${mq.producer.send}")
+    private String providerGroup;
+
+
     @Override
     public DemoBean getDemoBean() {
         DemoBean b = new DemoBean();
