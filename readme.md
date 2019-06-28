@@ -62,7 +62,7 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
             <version>2.12.0</version>
-        </dependency
+        </dependency>
   ```
   dubbo配置如下：
   ```
