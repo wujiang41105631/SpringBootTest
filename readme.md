@@ -6,6 +6,21 @@
 - com.alibaba.spring.boot
   这个插件有点自有，除了需要引入基本的starter以外还要自己引入zk,和curator，配置如下:
   ```
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
         
         <dependency>
             <groupId>com.alibaba.spring.boot</groupId>
@@ -51,7 +66,7 @@
   ```
   dubbo配置如下：
   ```
-   spring.dubbo.server=true
+    spring.dubbo.server=true
     spring.dubbo.application.name=SpringBootTest
     spring.dubbo.protocol.name=dubbo
     spring.dubbo.registry.address=10.255.72.159:2181
@@ -66,13 +81,19 @@
 - io.dubbo.springboot
   相对上者要简单
   ```
+    <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+        
       <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
-        </dependency>
+      </dependency>
 
-   <dependency>
+     <dependency>
             <groupId>io.dubbo.springboot</groupId>
             <artifactId>spring-boot-starter-dubbo</artifactId>
             <version>${dubbo-spring-boot}</version>
@@ -82,7 +103,7 @@
                     <groupId>org.springframework.boot</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
+      </dependency>
   ```
   
   配置文件
@@ -110,5 +131,6 @@
     }
 }
  ```
+- 打包时根据参数打包相应包下的配置,只要涉及resources插件得配置。需要注意的是 filtering 属性,为true的时候，替换配置文件中的一些变量, 
 
  

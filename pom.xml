@@ -239,7 +239,7 @@
                     <exclude>beta/*</exclude>
                     <exclude>online/*</exclude>
                 </excludes>
-                <!-- filtering为true的时候，这时只会把过滤的文件（<excludes>）打到classpath下，filtering为false的时候，会把不需要过滤的文件（<includes>）打到classpath下 ,并且替换配置文件中的一些变量-->
+                <!-- 需要注意的是 filtering 属性,为true的时候，替换配置文件中的一些变量, -->
                 <filtering>true</filtering>
             </resource>
 
