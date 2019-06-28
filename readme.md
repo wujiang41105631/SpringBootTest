@@ -131,6 +131,17 @@
     }
 }
  ```
+ pom中加入
+ ```
+    <packaging>jar</packaging>
+    --------------------------------------------------------- 
+    <plugins>
+     <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+     </plugin>
+   </plugins>
+ ```
 - 打包时根据参数打包相应包下的配置,只要涉及resources插件得配置。需要注意的是 filtering 属性,为true的时候，替换配置文件中的一些变量, 
-
+- 打jar包
  

@@ -194,58 +194,78 @@
 
     </dependencies>
 
-
     <build>
-        <finalName>risk-devourer-service</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-archetype-plugin</artifactId>
-                <version>2.3</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
-            </plugin>
-
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>${jdk.version}</source><!-- 源代码使用的开发版本 -->
-                    <target>${jdk.version}</target><!-- 需要生成的目标class文件的编译版本 -->
+                    <source>1.8</source><!-- 源代码使用的开发版本 -->
+                    <target>1.8</target><!-- 需要生成的目标class文件的编译版本 -->
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
             </plugin>
-
         </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources/</directory>
-                <excludes>
-                    <exclude>test/*</exclude>
-                    <exclude>beta/*</exclude>
-                    <exclude>online/*</exclude>
-                </excludes>
-                <!-- 需要注意的是 filtering 属性,为true的时候，替换配置文件中的一些变量, -->
-                <filtering>true</filtering>
-            </resource>
-
-            <resource>
-                <directory>src/main/resources/${profilesActive}</directory>
-            </resource>
-        </resources>
     </build>
+
+
+    <!--<build>-->
+    <!--<finalName>risk-devourer-service</finalName>-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>org.apache.maven.plugins</groupId>-->
+    <!--<artifactId>maven-archetype-plugin</artifactId>-->
+    <!--<version>2.3</version>-->
+    <!--</plugin>-->
+
+    <!--<plugin>-->
+    <!--<groupId>org.apache.maven.plugins</groupId>-->
+    <!--<artifactId>maven-deploy-plugin</artifactId>-->
+    <!--<version>2.8.2</version>-->
+    <!--</plugin>-->
+
+    <!--<plugin>-->
+    <!--<artifactId>maven-compiler-plugin</artifactId>-->
+    <!--<version>2.3.2</version>-->
+    <!--<configuration>-->
+    <!--<source>${jdk.version}</source>&lt;!&ndash; 源代码使用的开发版本 &ndash;&gt;-->
+    <!--<target>${jdk.version}</target>&lt;!&ndash; 需要生成的目标class文件的编译版本 &ndash;&gt;-->
+    <!--<encoding>UTF-8</encoding>-->
+    <!--</configuration>-->
+    <!--</plugin>-->
+
+    <!--<plugin>-->
+    <!--<groupId>org.apache.maven.plugins</groupId>-->
+    <!--<artifactId>maven-war-plugin</artifactId>-->
+    <!--<version>2.1.1</version>-->
+    <!--<configuration>-->
+    <!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
+    <!--</configuration>-->
+    <!--</plugin>-->
+
+    <!--</plugins>-->
+
+    <!--<resources>-->
+    <!--<resource>-->
+    <!--<directory>src/main/resources/</directory>-->
+    <!--<excludes>-->
+    <!--<exclude>test/*</exclude>-->
+    <!--<exclude>beta/*</exclude>-->
+    <!--<exclude>online/*</exclude>-->
+    <!--</excludes>-->
+    <!--&lt;!&ndash; 需要注意的是 filtering 属性,为true的时候，替换配置文件中的一些变量, &ndash;&gt;-->
+    <!--<filtering>true</filtering>-->
+    <!--</resource>-->
+
+    <!--<resource>-->
+    <!--<directory>src/main/resources/${profilesActive}</directory>-->
+    <!--</resource>-->
+    <!--</resources>-->
+    <!--</build>-->
 </project>
