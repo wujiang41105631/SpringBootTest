@@ -4,29 +4,8 @@
 ### spring boot 整合dubbo
 插件有两个：
 - com.alibaba.spring.boot
-  这个插件有点自有，除了需要引入基本的starter以外还要自己引入zk,和curator包以及logback包，配置如下:
+  这个插件有点自有，除了需要引入基本的starter以外还要自己引入zk,和curator，配置如下:
   ```
-   <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
         
         <dependency>
             <groupId>com.alibaba.spring.boot</groupId>
@@ -118,4 +97,18 @@
     spring.dubbo.scan=com.xcn.springboottest.dubbo
   ```
    在service 实现类中加入@Service
-  
+### 项目部署
+- 项目部署有2种方式，jar包和war包，jar包方式内嵌servlet容器. war包方式需要结合tomcat。此时需要注意tomcat的版本(jdk,servlet,el-expression)  
+- 项目打包war包部署，启动类需要如下,继承SpringBootServletInitializer 重写configure方法
+ ```
+ public class App extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        //DevourerServiceStarter.class为带有@SpringBootApplication注解的启动类
+        return builder.sources(App.class);
+    }
+}
+ ```
+
+ 
