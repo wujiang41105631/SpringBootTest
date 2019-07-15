@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -45,74 +47,14 @@ public class DuridConfig {
      * spring.druid.connectionProperties: 'druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000'  #通过connectProperties属性来打开mergeSql功能;慢SQL记录
      **/
 
-    @Value("${spring.datasource.url}")
-    private String url;
-
-    @Value("${spring.datasource.username}")
-    private String username;
-
-    @Value("${spring.datasource.password}")
-    private String password;
-
-    @Value("${spring.datasource.driver-class-name}")
-    private String driverClassName;
     @Value("${mybatis.mapper-locations}")
     private String mapperLocations;
 
-    //
-//    @Value("${spring.druid.initialSize}")
-//    private int initialSize;
-//
-//    @Value("${spring.druid.minIdle}")
-//    private int minIdle;
-//
-//    @Value("${spring.druid.maxActive}")
-//    private int maxActive;
-//
-//    @Value("${spring.druid.maxWait}")
-//    private int maxWait;
-//
-//    @Value("${spring.druid.timeBetweenEvictionRunsMillis}")
-//    private int timeBetweenEvictionRunsMillis;
-//
-//    @Value("${spring.druid.minEvictableIdleTimeMillis}")
-//    private int minEvictableIdleTimeMillis;
-//
-//    @Value("${spring.druid.validationQuery}")
-//    private String validationQuery;
-//
-//    @Value("${spring.druid.testWhileIdle}")
-//    private boolean testWhileIdle;
-//
-//    @Value("${spring.druid.testOnBorrow}")
-//    private boolean testOnBorrow;
-//
-//    @Value("${spring.druid.testOnReturn}")
-//    private boolean testOnReturn;
-//
-//    @Value("${spring.druid.poolPreparedStatements}")
-//    private boolean poolPreparedStatements;
-//
-//    @Value("${spring.druid.maxPoolPreparedStatementPerConnectionSize}")
-//    private int maxPoolPreparedStatementPerConnectionSize;
-//
-//    @Value("${spring.druid.filters}")
-//    private String filters;
-//
-//    @Value("{spring.druid.connectionProperties}")
-//    private String connectionProperties;
-//
-//
     @Bean
+    @ConfigurationProperties(prefix = "spring.datasource")
     @Primary // spring 在犹豫的时候优先选择哪一个具体的实现
     public DataSource dataSource() {
-        DruidDataSource datasource = new DruidDataSource();
-
-        datasource.setUrl(url);
-        datasource.setUsername(username);
-        datasource.setPassword(password);   //这里可以做加密处理
-        datasource.setDriverClassName(driverClassName);
-        return datasource;
+        return DataSourceBuilder.create().type(DruidDataSource.class).build();
     }
 
     @Bean
