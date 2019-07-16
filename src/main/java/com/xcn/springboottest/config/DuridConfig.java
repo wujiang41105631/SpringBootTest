@@ -49,6 +49,9 @@ public class DuridConfig {
 
     @Value("${mybatis.mapper-locations}")
     private String mapperLocations;
+    @Value("${mybatis.config-location}")
+    private String configLocation;
+
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
@@ -62,6 +65,7 @@ public class DuridConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocations));
+        factoryBean.setConfigLocation(new PathMatchingResourcePatternResolver().getResource(configLocation));
         factoryBean.setDataSource(dataSource());
         return factoryBean.getObject();
     }
