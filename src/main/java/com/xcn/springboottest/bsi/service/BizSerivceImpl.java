@@ -24,12 +24,7 @@ public class BizSerivceImpl implements BizService {
 
     @PostConstruct
     public void init(){
-        switch("123"){
-            case "1": break;
-            case "2": break;
-            case "3": break;
-
-        }
+        log.info("------------------------> biz init");
     }
 
     @Override
