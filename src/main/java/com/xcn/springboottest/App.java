@@ -1,5 +1,6 @@
 package com.xcn.springboottest;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -19,7 +20,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAsync
 public class App {
     public static void main(String[] args) {
-        SpringApplication.run(new Class[]{App.class}, args);
+//        SpringApplication.run(new Class[]{App.class}, args);
+        SpringApplication sa = new SpringApplication(App.class);
+        sa.setBannerMode(Banner.Mode.OFF);
+        sa.run(args);
     }
 
 }
