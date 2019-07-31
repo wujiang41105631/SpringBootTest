@@ -16,6 +16,6 @@ import org.springframework.stereotype.Component;
 public class BeanFactoryPostProcessorTest implements BeanFactoryPostProcessor{
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-       log.debug("BeanFactoryPostProcessorTest  processed");
+       log.info("BeanFactoryPostProcessorTest  processed");
     }
 }
