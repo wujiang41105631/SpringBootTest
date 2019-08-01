@@ -3,7 +3,9 @@ package com.xcn.springboottest.bsi.service;
 import com.alibaba.dubbo.common.json.JSON;
 import com.xcn.springboottest.bsi.dao.RuleDao;
 import com.xcn.springboottest.bsi.dto.RuleInfo;
+import com.xcn.springboottest.config.AppConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +23,13 @@ public class BizSerivceImpl implements BizService {
 
     @Autowired
     private RuleDao ruleDao;
+    @Autowired
+    private AppConfig appConfig;
 
     @PostConstruct
     public void init(){
         log.info("------------------------> biz init");
+        log.info("---->" + appConfig.getAppDesc());
     }
 
     @Override
