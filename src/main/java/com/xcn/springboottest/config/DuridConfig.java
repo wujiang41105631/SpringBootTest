@@ -1,6 +1,7 @@
 package com.xcn.springboottest.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -22,6 +25,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @MapperScans({@MapperScan(basePackages = "com.xcn.springboottest.bsi.dao", sqlSessionFactoryRef = "sqlSessionFactory")})
+@Slf4j
 public class DuridConfig {
 
     public DuridConfig() {
@@ -68,5 +72,17 @@ public class DuridConfig {
         factoryBean.setConfigLocation(new PathMatchingResourcePatternResolver().getResource(configLocation));
         factoryBean.setDataSource(dataSource());
         return factoryBean.getObject();
+    }
+
+    // 其中 dataSource 框架会自动为我们注入
+    @Bean
+    public PlatformTransactionManager txManager(DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
+
+    @Bean
+    public Object testBean(PlatformTransactionManager txManager) {
+        log.info("txManager : {}.", txManager.getClass().getName());
+        return new Object();
     }
 }

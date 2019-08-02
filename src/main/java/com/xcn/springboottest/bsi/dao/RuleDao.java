@@ -1,5 +1,6 @@
 package com.xcn.springboottest.bsi.dao;
 
+import com.xcn.springboottest.bsi.dto.CreditResultMetaInfo;
 import com.xcn.springboottest.bsi.dto.RuleInfo;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface RuleDao {
 //    List<RuleInfo> getRuleInfos();
 
     List<RuleInfo> getRuleInfos();
+
+    void transacationInsert(CreditResultMetaInfo creditResultMetaInfo);
 }

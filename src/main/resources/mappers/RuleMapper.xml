@@ -17,4 +17,13 @@
     <select id="getRuleInfos" resultMap="BaseResultMap">
         select * from rule_entity limit 0,10
     </select>
+
+    <insert id = "transacationInsert" parameterType="com.xcn.springboottest.bsi.dto.CreditResultMetaInfo">
+         insert into tb_credit_details (asset_id, batch_id,
+      supplier_name, interface_name, credit_status,
+      create_time, update_time,credit_step,scene_id,asset_result_version,credit_model_unikey)
+    values ( #{assetId,jdbcType=BIGINT}, #{batchId,jdbcType=VARCHAR},
+      #{supplierName,jdbcType=VARCHAR}, #{interfaceName,jdbcType=VARCHAR}, #{creditStatus,jdbcType=INTEGER},
+      now(),now(), #{creditStep,jdbcType=INTEGER}, #{sceneId,jdbcType=VARCHAR},#{assetResultVersion,jdbcType=INTEGER},#{creditModelUnikey,jdbcType=VARCHAR})
+    </insert>
 </mapper>

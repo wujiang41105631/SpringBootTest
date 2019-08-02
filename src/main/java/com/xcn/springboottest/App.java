@@ -3,12 +3,12 @@ package com.xcn.springboottest;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * Hello world!
@@ -18,6 +18,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @PropertySource("classpath:mq-config.properties")
 @EnableAsync
+@EnableAspectJAutoProxy(proxyTargetClass=true, exposeProxy=true)//开启AOP,//proxyTargetClass=true 强制使用AOP代理,exposeProxy=true
+@EnableTransactionManagement
 public class App {
     public static void main(String[] args) {
 //        SpringApplication.run(new Class[]{App.class}, args);

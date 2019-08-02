@@ -1,5 +1,6 @@
 package com.xcn.springboottest.bsi.controller;
 
+import com.alibaba.dubbo.common.json.ParseException;
 import com.xcn.springboottest.bsi.dto.RuleInfo;
 import com.xcn.springboottest.bsi.service.BizService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ public class BizController {
      * 字段注入
      */
     @PostConstruct
-    public void init() {
+    public void init() throws ParseException {
         log.error("{}", mqTopic);
     }
 
@@ -61,6 +62,11 @@ public class BizController {
      */
     @RequestMapping("/exception")
     public String exception() {
-        throw new NullPointerException("test");
+        try {
+            bizService.tt();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "asdfw";
     }
 }
