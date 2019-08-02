@@ -17,6 +17,4 @@ public interface BizService {
     public void tt()  throws ParseException;
 
     public void transactionTest() throws ParseException;
-
-    public void transcationExcveption();
 }

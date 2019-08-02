@@ -84,8 +84,8 @@ public class BizSerivceImpl implements BizService {
         transcationExcveption();
     }
 
-    @Override
-    public void transcationExcveption() {
+//    @Override
+    private void transcationExcveption() {
         log.info("will throw exception");
         throw new RuntimeException("yichang");
     }
