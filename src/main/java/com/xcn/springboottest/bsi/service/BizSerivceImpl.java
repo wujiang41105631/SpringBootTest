@@ -61,7 +61,7 @@ public class BizSerivceImpl implements BizService {
     @Override
     public void tt() throws ParseException {
         ((BizService) AopContext.currentProxy()).transactionTest(); // 这种调用方式事务回滚了
-//        transactionTest(); 这种调用方式 事务不会滚
+//        transactionTest(); //这种调用方式 事务不会滚
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -81,10 +81,10 @@ public class BizSerivceImpl implements BizService {
                 "}";
         CreditResultMetaInfo parse = JSON.parse(jsonStr, CreditResultMetaInfo.class);
         ruleDao.transacationInsert(parse);
+        log.info("------->");
         transcationExcveption();
     }
 
-//    @Override
     private void transcationExcveption() {
         log.info("will throw exception");
         throw new RuntimeException("yichang");
