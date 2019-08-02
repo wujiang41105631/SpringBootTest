@@ -51,17 +51,19 @@ public class BizSerivceImpl implements BizService {
         return ruleDao.getRuleInfos().get(0);
     }
 
-    @Override
-    public void tt() throws ParseException{
-        ((BizService) AopContext.currentProxy()).transactionTest();
-    }
-
     /**
      * 1. 加了Transactional的方法,在同类之间调用是不会有事务的。比如在本类的init方法中调用本方法事务不会生效
      * 2. 在其他类中调用此方法，事务会生效,需要使用
      * 针对问题1 需要使用 AopContext.currentProxy()来操作,此时需pom中引入spring-boot-starter-aop，且引入@EnableAspectJAutoProxy(proxyTargetClass=true, exposeProxy=true)
+     *
      * @throws ParseException
      */
+    @Override
+    public void tt() throws ParseException {
+        ((BizService) AopContext.currentProxy()).transactionTest(); // 这种调用方式事务回滚了
+//        transactionTest(); 这种调用方式 事务不会滚
+    }
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void transactionTest() throws ParseException {
@@ -79,11 +81,12 @@ public class BizSerivceImpl implements BizService {
                 "}";
         CreditResultMetaInfo parse = JSON.parse(jsonStr, CreditResultMetaInfo.class);
         ruleDao.transacationInsert(parse);
-        ((BizService) AopContext.currentProxy()).transcationExcveption();
+        transcationExcveption();
     }
 
     @Override
     public void transcationExcveption() {
+        log.info("will throw exception");
         throw new RuntimeException("yichang");
     }
 }
