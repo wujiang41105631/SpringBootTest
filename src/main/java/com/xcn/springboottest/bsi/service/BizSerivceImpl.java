@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
@@ -64,7 +65,7 @@ public class BizSerivceImpl implements BizService {
 //        transactionTest(); //这种调用方式 事务不会滚
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class,propagation= Propagation.REQUIRED)
     @Override
     public void transactionTest() throws ParseException {
         String jsonStr = "{\n" +
