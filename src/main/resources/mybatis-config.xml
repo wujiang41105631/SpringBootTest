@@ -11,5 +11,9 @@
          <setting name="logImpl" value="STDOUT_LOGGING" />
         <setting name="callSettersOnNulls" value="true"/>
     </settings>
+    
+    <plugins>
+        <plugin interceptor="com.xcn.springboottest.bsi.kouzhan.MyInteceptor" ></plugin>
+    </plugins>
 
 </configuration>
